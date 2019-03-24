@@ -9,6 +9,8 @@ app.get('*', (req, res) => {
   // res.send('Hello World!')
   // var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
   request(req.originalUrl, (error, response, body) => {
+    const headers = response.headers;
+    res.set(headers);
     res.end(body);
   });
 })
